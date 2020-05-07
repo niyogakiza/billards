@@ -1,0 +1,27 @@
+name: Build & deploy to GitHub Pages
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: Set email
+        run: git config --global user.email "${{ secrets.adminemail }}"
+      - name: Set username
+        run: git config --global user.name "${{ secrets.adminname }}"
+      - name: npm install command
+        run: npm install
+      - name: Run build command
+        run: npm run build
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_BRANCH: master
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: build # The folder the action should deploy.
