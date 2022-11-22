@@ -9,7 +9,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "react-three-fiber": "^4.1.4",
     "styled-components": "^5.1.0",
     "three": "^0.116.1"
